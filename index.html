@@ -101,7 +101,7 @@ canvas {
   color: #0f0;
 }
 .btn {
-  pointer-events: auto;
+  pointer-events: none;
   padding: 12px 40px;
   font-family: 'Courier New', monospace;
   font-size: clamp(14px, 3vmin, 22px);
@@ -112,6 +112,9 @@ canvas {
   letter-spacing: 3px;
   transition: all 0.2s;
   text-transform: uppercase;
+}
+#start-screen.active .btn, #gameover-screen.active .btn {
+  pointer-events: auto;
 }
 .btn:hover, .btn:active {
   background: rgba(0,255,0,0.15);
@@ -238,8 +241,6 @@ canvas {
 <script>
 (function() {
   'use strict';
-
-  console.log('MISSILE DEFENSE: IIFE START');
 
   // ─── Canvas Setup ──────────────────────────────────────────────
   const canvas = document.getElementById('game');
@@ -1232,12 +1233,9 @@ canvas {
   });
 
   // ─── Init ───────────────────────────────────────────────────────
-  console.log('MISSILE DEFENSE: calling initGameState');
   initGameState();
-  console.log('MISSILE DEFENSE: after init, game.state=' + game.state + ' cities=' + game.cities.length);
   updateHUD();
   startScreen.classList.add('active');
-  console.log('MISSILE DEFENSE: starting game loop');
   requestAnimationFrame(gameLoop);
 
 })();
