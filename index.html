@@ -274,8 +274,8 @@ canvas {
   const INTERCEPTOR_SPEED = 380; // px/s
   const EXPLOSION_RADIUS = 40;
   const EXPLOSION_DURATION = 0.6; // seconds
-  const ENEMY_SPEED_BASE = 70;
-  const ENEMY_SPEED_PER_WAVE = 10;
+  const ENEMY_SPEED_BASE = 30;
+  const ENEMY_SPEED_PER_WAVE = 6;
   const MISSILES_PER_WAVE_BASE = 6;
   const MISSILES_PER_WAVE_INC = 3;
   const MIRV_WAVE_THRESHOLD = 3; // MIRVs start at wave 3
@@ -797,8 +797,8 @@ canvas {
         spawnEnemyMissile();
         game.totalSpawned++;
         // Randomize next spawn
-        const baseInterval = 0.6 - game.wave * 0.03;
-        game.enemySpawnTimer = Math.max(0.15, baseInterval + Math.random() * 0.4);
+        const baseInterval = 1.2 - game.wave * 0.04;
+        game.enemySpawnTimer = Math.max(0.2, baseInterval + Math.random() * 0.5);
       }
     }
 
@@ -818,7 +818,7 @@ canvas {
     game.state = 'playing';
     game.totalSpawned = 0;
     game.totalToSpawn = MISSILES_PER_WAVE_BASE + (game.wave - 1) * MISSILES_PER_WAVE_INC;
-    game.enemySpawnTimer = 0.4;
+    game.enemySpawnTimer = 0.8;
     game.waveDrawn = true;
 
     // Restock silos partially
