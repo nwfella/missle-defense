@@ -239,6 +239,8 @@ canvas {
 (function() {
   'use strict';
 
+  console.log('MISSILE DEFENSE: IIFE START');
+
   // ─── Canvas Setup ──────────────────────────────────────────────
   const canvas = document.getElementById('game');
   const ctx = canvas.getContext('2d');
@@ -1230,9 +1232,12 @@ canvas {
   });
 
   // ─── Init ───────────────────────────────────────────────────────
+  console.log('MISSILE DEFENSE: calling initGameState');
   initGameState();
+  console.log('MISSILE DEFENSE: after init, game.state=' + game.state + ' cities=' + game.cities.length);
   updateHUD();
   startScreen.classList.add('active');
+  console.log('MISSILE DEFENSE: starting game loop');
   requestAnimationFrame(gameLoop);
 
 })();
